@@ -1,0 +1,157 @@
+
+
+<body>
+
+	<!-- Start Header Area -->
+	
+	<!-- End Header Area -->
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					{{!-- <h1>Confirmation</h1> --}}
+					<nav class="d-flex align-items-center">
+						<a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="/orderTables">Orders</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Order Details Area =================-->
+	<section class="order_details section_gap">
+		<div class="container">
+			{{!-- <h3 class="title_confirmation">Thank you. Your order has been received.</h3> --}}
+			<div class="row order_d_inner">
+				<div class="col-lg-4">
+
+                    {{#each order}}
+
+					<div class="details_item">
+						<h4>Order Info</h4>
+						<ul class="list">
+							<li><a href="#"><span>Order Id</span> : {{this._id}}</a></li>
+							<li><a href="#"><span>Date</span> : {{this.date}}</a></li>
+							<li><a href="#"><span>Total</span> : {{this.total}}</a></li>
+							<li><a href="#"><span>Payment method</span> : {{this.paymentMethod}}</a></li>
+						</ul>
+					</div>
+
+                    {{/each}}
+
+				</div>
+				<div class="col-lg-4">
+
+                    {{#each order}}
+					<div class="details_item">
+						<h4>Billing Address</h4>
+						<ul class="list">
+							<li><a href="#"><span>House number</span> : {{deliveryDetails.homeNumber}}</a></li>
+							<li><a href="#"><span>Street</span> : {{deliveryDetails.streetNumber}}</a></li>
+							<li><a href="#"><span>Town</span> : {{deliveryDetails.Town}}</a></li>
+							<li><a href="#"><span>Postcode </span> : {{deliveryDetails.Zip}}</a></li>
+						</ul>
+					</div>
+                    {{/each}}
+				</div>
+
+				<div class="col-lg-4">
+                    {{#each order}}
+					<div class="details_item">
+						<h4>Shipping Address</h4>
+						<ul class="list">
+							<li><a href="#"><span>House number</span> : {{deliveryDetails.homeNumber}}</a></li>
+							<li><a href="#"><span>Street</span> : {{deliveryDetails.streetNumber}}</a></li>
+							<li><a href="#"><span>Town</span> : {{deliveryDetails.Town}}</a></li>
+							<li><a href="#"><span>Postcode </span> : {{deliveryDetails.Zip}}</a></li>
+						</ul>
+					</div>
+                    {{/each}}
+				</div>
+
+			</div>
+			<div class="order_details_table">
+				<h2>Order Details</h2>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+                            {{#each order}}
+
+							<tr>
+								<td>
+									<p>{{this.products.name}}</p>
+								</td>
+								<td>
+									<h5>x {{this.quantity}}</h5>
+								</td>
+								<td>
+									<p>{{this.products.price}}</p>
+								</td>
+							</tr>
+                            {{/each}}
+							
+							
+							<tr>
+								<td>
+									<h4>Subtotal</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>$2160.00</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>Shipping</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>Flat rate: $50.00</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>Total</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>$2210.00</p>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Order Details Area =================-->
+
+	<!-- start footer Area -->
+	
+	<!-- End footer Area -->
+
+
+
+
+	
+</body>
+
+</html>

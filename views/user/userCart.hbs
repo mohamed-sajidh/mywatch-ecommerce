@@ -1,0 +1,243 @@
+
+	<!-- End Header Area -->
+
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>{{page}}</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="/">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="/cart">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+
+    <!--================Cart Area =================-->
+    {{#if products}}
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        {{#each products}}
+                            <tr>
+                                
+                                <td>
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="/product-images/{{this.product._id}}.jpg"  alt="" style="width: 100px;">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>{{this.product.name}}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                
+                                
+                                <td>
+                                    <h5>{{this.product.price}}</h5>
+                                </td>
+                               
+                                <td>
+
+                                    <button class="cart-item-count mr-2,btn btn-success" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{user._id}}', -1 , '{{this.product.price}}' )">-</button>
+                                    <span id="{{this.product._id}}">{{this.quantity}}</span>
+                                    <button class="cart-item-count ml-2,btn btn-success" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{user._id}}', 1, '{{this.product.price}}' )">+</button>                                    
+
+                                </td>
+
+                                <td>
+                                   <button class="cart-item-count mr-2,btn btn-danger" onclick="removeCartProduct('{{this._id}}','{{this.product._id}}','{{this.user}}')">Remove</button>
+                                </td>
+                            </tr>
+
+                             
+
+                            {{/each}}
+
+
+                            <tr class="bottom_button">
+                                <td>
+                                   
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                      <h5>Total</h5>
+                                </td>
+                                <td>
+                                    
+                                      <h5><span id="total">{{total}}</span></h5>
+                                   
+                                </td>
+                            </tr>
+
+
+                            <tr class="out_button_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="checkout_btn_inner d-flex align-items-center">
+                                        <a class="gray_btn" href="/">Continue Shopping</a>
+                                        <a class="primary-btn" href="/checkout">Proceed to checkout</a>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                               
+                            </tr>
+
+
+
+                            {{!-- <tr class="shipping_area">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+
+
+
+                                <td>
+                                    <h5>Shipping</h5>
+                                </td>
+                                <td>
+                                    <div class="shipping_box">
+                                        <ul class="list">
+                                            <li><a href="#">Flat Rate: $5.00</a></li>
+                                            <li><a href="#">Free Shipping</a></li>
+                                            <li><a href="#">Flat Rate: $10.00</a></li>
+                                            <li class="active"><a href="#">Local Delivery: $2.00</a></li>
+                                        </ul>
+                                        <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
+                                        <select class="shipping_select">
+                                            <option value="1">Bangladesh</option>
+                                            <option value="2">India</option>
+                                            <option value="4">Pakistan</option>
+                                        </select>
+                                        <select class="shipping_select">
+                                            <option value="1">Select a State</option>
+                                            <option value="2">Select a State</option>
+                                            <option value="4">Select a State</option>
+                                        </select>
+                                        <input type="text" placeholder="Postcode/Zipcode">
+                                        <a class="gray_btn" href="#">Update Details</a>
+                                    </div>
+                                </td>
+
+
+                                
+                            </tr> --}}
+                           
+
+
+                            {{!-- {{/each}} --}}
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    {{else}}
+    <p class="text-center mt-5 mb-5">No items in cart</p>
+    {{/if}}
+
+     {{!-- <tr>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <h5>Total</h5>
+                                </td>
+                                <td>
+                                    <h5>$2160.00</h5>
+                                </td>
+                            </tr> --}}
+    <!--================End Cart Area =================-->
+
+    <!-- start footer Area -->
+    
+    <!-- End footer Area -->
+
+    <script>
+        function changeQuantity(cartId,prodId,userId,count,price){
+            console.log(cartId,prodId,count)
+            console.log("called")
+    let quantity=parseInt(document.getElementById(prodId).innerHTML)
+    count=parseInt(count)
+    $.ajax(
+        {
+            url:'/changeProductQuantity',
+            data:{
+                user:userId,
+                cart:cartId,
+                product:prodId,
+                count:count,
+                quantity:quantity
+            },
+            method:'post',
+            success:(response)=>{
+                console.log(response)
+                if(response.removeProduct){
+                    alert("product removed from the cart")
+                   
+                }
+                else{
+                    let total = $('#total').html()
+                    total=parseInt(price * count)
+                    $('#total').html(total)
+                    
+                    document.getElementById(prodId).innerHTML=quantity+count
+                    document.getElementById(total).innerHTML=response.total
+                }
+
+                
+            }
+        }
+    )
+}
+
+
+
+
+
+
+    </script>
+
+  
+
+ 
+    
+</body>
+
+</html>

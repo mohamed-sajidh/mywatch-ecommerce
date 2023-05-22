@@ -1,0 +1,96 @@
+
+<body>
+
+  <!-- ======= Header ======= -->
+
+
+  <!-- ======= Sidebar ======= -->
+  
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Order Tables</h1>
+      {{!-- <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">General</li>
+        </ol>
+      </nav> --}}
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+    
+
+        <div class="col-lg-12">
+
+          
+
+          
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p><code></code> </p>
+              <!-- Bordered Table -->
+              <table class="table table-bordered">
+                <thead>
+                    
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Method</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">View</th>
+                  </tr>
+
+                </thead>
+                
+                <tbody>
+                    {{#each order}}
+                  <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.deliveryDetails.name}}</td>
+                    <td>{{this.date}}</td>
+                    <td>{{this.status}}</td>
+                    <td>₹{{this.total}}</td>
+                    <td>{{this.paymentMethod}}</td>
+                    <td>
+                          <form action="/admin/cancel-product" method="post">
+                            <input type="text" value="{{this._id}}" name="id" id="" hidden>
+                            <button class="btn btn-danger" type="submit">Cancel</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="/admin/view-product" class="btn btn-secondary">view products</a>
+                    </td>
+                  </tr>
+                     {{/each}}
+                </tbody>
+
+              </table>
+              <!-- End Bordered Table -->
+
+              {{!-- <p><a href="https://getbootstrap.com/docs/5.0/utilities/borders/#border-color" target="_blank">Border color utilities</a> can be added to change colors:</p> --}}
+
+              
+            </div>
+          </div>
+
+        
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+</body>
+
+</html>

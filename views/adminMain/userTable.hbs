@@ -1,0 +1,96 @@
+
+
+<body>
+
+  <!-- ======= Header ======= -->
+
+  <!-- ======= Sidebar ======= -->
+
+
+    <div class="pagetitle">
+      <h1>General Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">General</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Default Table</h5>
+
+              <!-- Default Table -->
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{#each user}}
+                  <tr>
+                    <th scope="row">{{@index}}</th>
+                    <td>{{this.username}}</td>
+                    <td>{{this.email}}</td>
+                    <td>{{this.phone}}</td>
+                    <td>
+                        {{#if this.isBlocked}}
+                        blocked
+                        {{else}}
+                        active
+                        {{/if}}
+                    </td>
+                    <td>
+                        <a href="/admin/blockuser/{{this._id}}" class="btn btn-danger">block</a>
+                        <a href="/admin/unblockuser/{{this._id}}" class="btn btn-primary">Unblock</a>
+                    </td>
+                  </tr>
+                  
+                 {{/each}}
+                 
+                  
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+            </div>
+          </div> 
+
+
+
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+ 
+
+ 
+
+</body>
+
+</html>

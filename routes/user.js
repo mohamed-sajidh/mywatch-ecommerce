@@ -5,7 +5,8 @@ var userHelpers=require('../helpers/user-helpers');
 
 
 
-const {userHome,userLogin,signupPage,loginButton,loginHome,signupButton,sigupHome,homeButton,logoutButton} = require('../Controller/user-controller');
+const {userHome,userLogin,signupPage,loginButton,loginHome,signupButton,sigupHome,homeButton,logoutButton,clickProduct,verifyLogin,cart,addToCart,changeQuantity,removeProduct,proceedToCheckout,placeOrder,orderCompletion,orderTable,viewOrders,myOrder} = require('../Controller/user-controller');
+// const { route } = require('./admin');
 
 
 /* GET home page. */
@@ -23,9 +24,34 @@ router.get('/signup',signupPage)
 
 router.post('/signup',signupButton)
 
-router.get('/home',sigupHome)
-
 router.get('/logout',logoutButton)
+
+router.post('/click',clickProduct)
+
+router.get('/cart',verifyLogin,cart)
+
+router.post('/add-to-cart/:id',verifyLogin,addToCart)
+
+router.post('/changeProductQuantity',changeQuantity)
+
+router.post('/removeCartProduct',removeProduct)
+
+router.get('/checkout',verifyLogin,proceedToCheckout)
+
+router.post('/place-order',placeOrder)
+
+router.get('/order-completion',verifyLogin,orderCompletion)
+
+router.get('/view-order',viewOrders)
+
+router.get('/orderTables',orderTable)
+
+router.get('/my-order',myOrder)
+
+
 
 
 module.exports = router;
+
+
+

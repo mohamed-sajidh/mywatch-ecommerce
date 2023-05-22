@@ -24,21 +24,25 @@
                   <div class="card-body">
                     
                     <form class="forms-sample" action="/admin/edit-product/{{product._id}}" method="post">
+
                       <div class="form-group">
                         <label for="exampleInputUsername1">Name</label>
                         <input type="text" class="form-control" name="name" id="exampleInputUsername1" placeholder="Name" 
                         value="{{product.name}}">
                       </div>
+
                       <div class="form-group">
                         <label for="exampleInputEmail1">Model</label>
                         <input type="text" class="form-control" name="model" id="exampleInputEmail1" placeholder="Model"
                         value="{{product.model}}">
                       </div>
+
                       <div class="form-group">
                         <label for="exampleInputPassword1">Price</label>
                         <input type="text" class="form-control" name="price" id="exampleInputPassword1" placeholder="Price" 
                         value="{{product.price}}">
                       </div>
+
                        <div class="form-group">
                         <label for="exampleTextarea1">Description</label>
                         <textarea class="form-control" name="description" id="exampleTextarea1" placeholder="Description" rows="4">
@@ -47,10 +51,10 @@
 
                        <div class="form-group">
                         <label>Image</label>
-                        <img src="/product-images/{{product._id}}.jpg" alt="" style="width: 70px; height:auto">
+                        <img src="/product-images/{{product._id}}.jpg" alt="" style="width: 70px; height:auto" id="imgView">
                         <input type="file" name="image" class="file-upload-default">
                         <div class="input-group col-xs-12">
-                          <input type="file" class="form-control file-upload-info" name="image" placeholder="Upload Image">
+                          <input type="file" class="form-control file-upload-info" name="image" placeholder="Upload Image" onchange="viewImage(event)">
                           <span class="input-group-append">
                             <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                           </span>
@@ -60,6 +64,7 @@
                     
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
                       <button class="btn btn-dark">Cancel</button>
+                      
                     </form>
                   </div>
                 </div>
@@ -104,4 +109,9 @@
 
 <script>
   document.getElementById("exampleTextarea1").defaultValue=document.getElementById("description").value;
+
+  function viewImage(event){
+    document.getElementById(imgView).src=URL.createObjectURL(event.target.files[0])
+  }
+
 </script>

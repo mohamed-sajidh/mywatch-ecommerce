@@ -26,6 +26,7 @@
 							</div>
 						</div>
 						<!-- single-slide -->
+
 						<div class="row single-slide">
 							<div class="col-lg-5 mt-5">
 								<div class="banner-content">
@@ -44,6 +45,7 @@
 								</div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -108,12 +110,13 @@
 	<!-- start product Area -->
 	<section class="owl-carousel active-product-area section_gap">
 		<!-- single product slide -->
+		
 		<div class="single-product-slider">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>G-SHOCK</h1>
+							<h1>Sports</h1>
 							<p>Taking Toughness  to the Limit</p>
 						</div>
 					</div>
@@ -129,34 +132,48 @@
 					<h6>{{this.name}}</h6>
 					<h6>{{this.model}}</h6>
 					<h6>{{this.price}}</h6>
-					<h6>{{this.description}}</h6>
+					
 		
-					<div class="prd-bottom">
-		
-						<a href="" class="social-info">
-							<span class="ti-bag"></span>
-							<p class="hover-text">add to bag</p>
+		           
+					<div class="prd-bottom">    
+
+		                 
+						
+
+						<a class="social-info" onclick="addToCart('{{this._id}}')">
+							<span class="lnr lnr-move"></span>
+							<p class="hover-text">Add To Cart</p>
 						</a>
-						<a href="" class="social-info">
+						
+
+						<a class="social-info">
 							<span class="lnr lnr-heart"></span>
 							<p class="hover-text">Wishlist</p>
 						</a>
+						
+						
+
 						<a href="" class="social-info">
-							<span class="lnr lnr-sync"></span>
-							<p class="hover-text">compare</p>
-						</a>
-						<a href="" class="social-info">
+						<form action="/click" method="post" >
+						<input type="text" name="id" value="{{this._id}}" hidden>
 							<span class="lnr lnr-move"></span>
-							<p class="hover-text">view more</p>
+						<button type="submit" class="hover-text" style="border: none; background:transparent ">View more</button>
+						</form>
 						</a>
+					
+
+
+						
 					</div>
 				</div>
+				
 			</div>
 					</div>
 					{{/each}}
 					<!-- single product -->
 		
 		<div class="col-lg-3 col-md-6">
+			
 		
 			
 		
@@ -183,7 +200,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>Coming Products</h1>
+							<h1>formal</h1>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
 								dolore
 								magna aliqua.</p>
@@ -250,14 +267,13 @@
 					<div class="active-exclusive-product-slider">
 						<!-- single exclusive carousel -->
 						<div class="single-exclusive-slider">
-							<img class="img-fluid" src="userStyle/img/product/e-p1.png" alt="">
+							<img class="img-fluid" src="userStyle/img/product/Watch 2.jfif" alt="">
 							<div class="product-details">
 								<div class="price">
 									<h6>$150.00</h6>
 									<h6 class="l-through">$210.00</h6>
 								</div>
-								<h4>addidas New Hammer sole
-									for Sports person</h4>
+								<h4>Watch</h4>
 								<div class="add-bag d-flex align-items-center justify-content-center">
 									<a class="add-btn" href=""><span class="ti-bag"></span></a>
 									<span class="add-text text-uppercase">Add to Bag</span>
@@ -265,7 +281,7 @@
 							</div>
 						</div>
 						<!-- single exclusive carousel -->
-						<div class="single-exclusive-slider">
+						{{!-- <div class="single-exclusive-slider">
 							<img class="img-fluid" src="userStyle/img/product/e-p1.png" alt="">
 							<div class="product-details">
 								<div class="price">
@@ -279,7 +295,7 @@
 									<span class="add-text text-uppercase">Add to Bag</span>
 								</div>
 							</div>
-						</div>
+						</div> --}}
 					</div>
 				</div>
 			</div>
@@ -454,3 +470,10 @@
 </body>
 
 </html>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+	

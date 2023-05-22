@@ -1,7 +1,7 @@
 var db=require('../config/connection')
 var collection=require('../config/collection');
 const { ObjectId } = require('mongodb');
-const { response } = require('../app');
+// const { response } = require('../app');
 var objectId=require('mongodb').ObjectId
 
 
@@ -11,7 +11,6 @@ module.exports={
 
 
     addProduct: (product) => {
-        console.log(product);
         return new Promise((resolve, reject) => {
             db.get().collection(collection.PRODUCT_COLLECTION).insertOne(product).then((res) => {
                 resolve({ id: res.insertedId })
@@ -60,8 +59,28 @@ module.exports={
                         description: proDetails.description
                     }
                 }).then((response) => {
-                    resolve()
+                    resolve(response)
                 })
+        })
+    },
+
+
+    viewProduct:(prodId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.PRODUCT_COLLECTION).findOne({_id:objectId(prodId)}).then((product)=>{
+                resolve(product)
+            })
+        })
+    },
+
+
+    getAllorders:()=>{
+           console.log("oooooooooooooooooooo");
+        return new Promise(async(resolve,reject)=>{
+
+           let order=await db.get().collection(collection.ORDER_COLLECTION).find().toArray()
+            console.log(order,"uuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+           resolve(order)
         })
     }
 }
